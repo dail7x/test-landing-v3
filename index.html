@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Landing v3 - Coolify Deploy</title>
+    <style>
+        :root { --primary: #10b981; --bg: #111827; --accent: #f59e0b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            background: var(--bg); 
+            color: white; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .container { max-width: 800px; }
+        h1 { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .badge { 
+            background: rgba(16, 185, 129, 0.2); 
+            color: var(--primary);
+            padding: 0.5rem 1rem; 
+            border-radius: 2rem; 
+            font-size: 0.875rem; 
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border: 1px solid var(--primary);
+        }
+        p { font-size: 1.25rem; color: #9ca3af; line-height: 1.8; margin-bottom: 2rem; }
+        .meta { 
+            margin-top: 3rem; 
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        .check { color: var(--primary); margin-right: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">✨ v3.0 - Workflow Validado</div>
+        <h1>Coolify + GitHub Workflow</h1>
+        <p>Este landing fue desplegado automáticamente mediante Coolify conectado a GitHub. Cada push a <code>main</code> o <code>develop</code> triggera un nuevo deploy.</p>
+        <div class="meta">
+            <div><span class="check">✓</span> Repo: dail7x/test-landing-v3</div>
+            <div><span class="check">✓</span> Deploy: Automated via Coolify</div>
+            <div><span class="check">✓</span> Server: Hetzner VPS (116.203.118.1)</div>
+            <div><span class="check">✓</span> Environment: <span id="env">STAGING</span></div>
+        </div>
+    </div>
+    <script>
+        // Detect environment based on hostname
+        const hostname = window.location.hostname;
+        const envEl = document.getElementById('env');
+        if (hostname.includes('preprod')) {
+            envEl.textContent = 'STAGING';
+            envEl.style.color = 'var(--accent)';
+        } else {
+            envEl.textContent = 'PRODUCTION';
+            envEl.style.color = 'var(--primary)';
+        }
+    </script>
+</body>
+</html>
