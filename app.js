@@ -39,3 +39,4 @@ if (hostname.includes('preprod')) {
   envEl.textContent = 'PRODUCTION';
   envEl.style.color = 'var(--primary)';
 }
+// Test auto-deploy
